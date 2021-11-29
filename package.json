@@ -2,10 +2,9 @@
   "name": "frontend",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start -H 0.0.0.0 -p ${PORT:-64001}",
-    "lint": "next lint"
+    "start": "NODE_ENV=production node server.js"
   },
   "dependencies": {
     "next": "12.0.3",
