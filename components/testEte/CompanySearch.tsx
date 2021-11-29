@@ -15,20 +15,19 @@ export default function CompanySearch({
   const [state, setState] = useState("");
   const [note, setNote] = useState(" ");
 
+  const validator = (input: string) => {
+    if (!input) return ["danger", "ادخل اسم الشركه "];
+    if (input.match(/[^a-zA-Z\s&.]/))
+      return ["danger", "اسم الشركه يجب ان يكون بالانجليزيه"];
+    return ["success", " "];
+  };
+
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const [validateState, validateNote] = validator(e.target.value);
     setState(validateState);
     setNote(validateNote);
     handler(e.target.value, validateState !== "danger");
   };
-
-  const validator = (input: string) => {
-    if (!input) return ["warning", "ادخل اسم الشركه "];
-    if (input.match(/[^a-zA-Z\s&.]/))
-      return ["danger", "اسم الشركه يجب ان يكون بالانجليزيه"];
-    return ["success", " "];
-  };
-
   return (
     <>
       <TextInput

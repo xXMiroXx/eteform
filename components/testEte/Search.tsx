@@ -41,10 +41,8 @@ export default class SearchForm extends Form<SearchFormProps, SearchFormState> {
   }
 
   searchInput() {
-    const handler = (inputVal: string, state: boolean) => {
-      this.setState({
-        inputFields: { searchField: { content: inputVal, state } },
-      });
+    const handler = (content: string, state: boolean) => {
+      this.inputReducer("searchField", { content, state });
     };
     const { content, state } = this.state.inputFields.searchField;
     return <CompanySearch content={content} handler={handler} />;

@@ -3,6 +3,7 @@ import React from "react";
 import Styles from "./Form.module.scss";
 import Item from "@/components/UI/Item";
 import Btn from "@/components/UI/Btn";
+import deepCopy from "helper/obj-cloner";
 
 // const InitialFormState = {
 //   isTouched: false,
@@ -35,6 +36,7 @@ export type FormConfig = {
     };
   };
 };
+
 export default class Form<P, S> extends React.Component<FormProps, FormState> {
   // Form Config
   formConfig: FormConfig = {
@@ -49,6 +51,17 @@ export default class Form<P, S> extends React.Component<FormProps, FormState> {
       },
     },
   };
+
+  inputReducer(fieldName: string, value: { content: string; state: boolean }) {
+    this.setState((state) => {
+      const newState = { ...state };
+      newState.inputFields[fieldName] = value;
+      newState.isValid = Object.values(newState.inputFields).every(
+        (val) => val.state
+      );
+      return newState;
+    });
+  }
 
   formStatus() {
     const { name, icon } = this.state.formState;
@@ -71,7 +84,7 @@ export default class Form<P, S> extends React.Component<FormProps, FormState> {
     if (!submitBtn) return;
     return (
       <Btn
-        {...(this.state.isValid && { disabled: true })}
+        {...(!this.state.isValid && { disabled: true })}
         type="submit"
         color="primary"
       >
@@ -105,6 +118,7 @@ export default class Form<P, S> extends React.Component<FormProps, FormState> {
   }
 
   render() {
+    console.log(this.state.isValid);
     return (
       <form className={Styles.form}>
         {this.formStatus()}
