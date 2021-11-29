@@ -1,0 +1,44 @@
+@use "./variables" as *;
+@forward "./variables";
+
+@mixin container($size) {
+  max-width: $size;
+  margin: 0 auto;
+}
+
+@mixin flex-container($justify: initial) {
+  display: flex;
+  justify-content: $justify;
+  align-items: center;
+}
+
+@mixin equal-flex($justify: unset) {
+  @include flex-container($justify);
+  > * {
+    flex: 1 1 0;
+  }
+}
+
+@mixin btn-config($bg-color, $t-color) {
+  color: $t-color;
+  background-color: $bg-color;
+  border-radius: $btn-radius;
+  border: none;
+  box-shadow: 0 3rem 6rem rgba($color-black, 0.2);
+  padding: 0.5rem 1.5rem;
+  font-weight: $weight-bolder;
+
+  &:hover {
+    background-color: lighten($bg-color, 5%);
+  }
+  &:disabled {
+    background-color: $color-grey;
+  }
+}
+
+@mixin center-element {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}

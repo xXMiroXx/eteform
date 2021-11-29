@@ -1,0 +1,52 @@
+@use "@/styles/abstract/mixins" as *;
+
+.hero {
+  padding: 15rem 3rem 5rem;
+  min-height: 100vh;
+
+  gap: 10rem;
+  background-image: linear-gradient(
+      to right,
+      rgba($color-secondary, 0.5),
+      rgba($color-black, 0.6)
+    ),
+    url("/images/hero-1.webp");
+  background-position: 80%;
+  background-size: cover;
+
+  &__heading {
+    font-size: 5rem;
+    text-align: center;
+    margin-bottom: 10rem;
+  }
+  &__text {
+    color: $color-white;
+    margin-bottom: 20rem;
+    flex: 2;
+  }
+
+  @media (min-width: 900px) {
+    &__text {
+      color: $color-secondary;
+    }
+    display: flex;
+    justify-content: space-around;
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-white, 0.9),
+        rgba($color-white, 0.6)
+      ),
+      url("/images/flag.webp");
+    padding: 22rem 3rem 5rem;
+    &__photos {
+      display: block;
+      flex: 2;
+    }
+  }
+}
+
+.search {
+  &__heading {
+    text-align: center;
+  }
+}

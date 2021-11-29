@@ -1,0 +1,63 @@
+@use "./abstract/mixins" as *;
+
+.header {
+  @include flex-container(space-between);
+  padding: 0 1rem;
+  background-color: $color-grey-dark;
+  color: $color-grey-light;
+  font-size: $font-size-md;
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  &__actions {
+    @include flex-container;
+    gap: 2rem;
+  }
+
+  &__collapse {
+    border: none;
+    background-color: transparent;
+    color: $color-grey-light;
+    font-size: 3rem;
+    z-index: 999;
+  }
+  &__nav {
+    text-align: center;
+    font-size: 3rem;
+    background-color: $color-grey-dark;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-top: 1rem;
+    transition: all 0.5s;
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    right: 1rem;
+    transform: translateY(-110%);
+    z-index: 999;
+    &--active {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    :global .nav-list {
+      list-style: none;
+      &__nested {
+        display: none;
+        top: 0;
+      }
+    }
+    :global nav-item__wraper--active + :global.nav-list__nested {
+      display: block;
+    }
+  }
+
+  &__logo {
+    position: relative;
+    width: 7rem;
+    height: 6rem;
+    filter: invert(0.8);
+  }
+}

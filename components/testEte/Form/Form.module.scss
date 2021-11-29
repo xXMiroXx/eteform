@@ -1,0 +1,22 @@
+@use "@/styles/abstract/mixins" as *;
+.form {
+  position: relative;
+  width: 100%;
+  background-color: $color-white;
+  box-shadow: 0 3px 6px rgba($color-black, 0.2);
+  border-radius: $container-radius;
+  padding: $gap-md $gap-sm;
+  &__status {
+    width: max-content;
+    margin: auto;
+    font-size: 2rem;
+    display: block;
+    text-align: center;
+  }
+  &__inputs {
+    margin-bottom: $gap-md;
+  }
+  &__controlls {
+    @include flex-container(space-between);
+  }
+}

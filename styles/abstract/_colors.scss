@@ -1,0 +1,16 @@
+// Text Color
+
+@each $name, $color in $theme-colors {
+  .text {
+    color: transparent;
+    &-#{$name} {
+      color: $color;
+    }
+  }
+  .bg {
+    background-color: transparent;
+    &-#{$name} {
+      background: $color;
+    }
+  }
+}

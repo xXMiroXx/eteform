@@ -1,0 +1,29 @@
+@use "@/styles/abstract/mixins" as *;
+
+.composition {
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  &__photo {
+    position: absolute;
+    width: 60%;
+    border-radius: $container-radius;
+    overflow: hidden;
+
+    &-1 {
+      top: 0;
+      right: 0;
+      z-index: 2;
+    }
+    &-2 {
+      top: 25%;
+      left: 0;
+      z-index: 1;
+    }
+    &-3 {
+      right: 10%;
+      top: 40%;
+    }
+  }
+}

@@ -1,0 +1,58 @@
+[
+  {
+    "name": "الرئيسية",
+    "link": "/",
+    "icon": "FaHome",
+    "id": "1"
+  },
+  {
+    "name": "من نحن",
+    "link": "/about",
+    "icon": "FaUsers",
+    "id": "2"
+  },
+  {
+    "name": "خطة الاسعار",
+    "nestedList": [
+      {
+        "name": "خطه 1",
+        "link": "/package-1",
+        "icon": "FaCreditCard",
+        "id": "3-1"
+      },
+      {
+        "name": "خطه 2",
+        "link": "/package-2",
+        "icon": "FaCreditCard",
+        "id": "3-2"
+      },
+      {
+        "name": "خطه 3",
+        "link": "/package-3",
+        "icon": "FaCreditCard",
+        "id": "3-3"
+      }
+    ],
+    "icon": "FaChevronDown",
+    "id": "3"
+  },
+  {
+    "name": "الخدمات",
+    "nestedList": [
+      {
+        "name": "خدمه 1",
+        "link": "/service-1",
+        "icon": "FaTasks",
+        "id": "4-1"
+      },
+      {
+        "name": "خدمه 2",
+        "link": "/service-2",
+        "icon": "FaTasks",
+        "id": "4-2"
+      }
+    ],
+    "icon": "FaChevronDown",
+    "id": "4"
+  }
+]

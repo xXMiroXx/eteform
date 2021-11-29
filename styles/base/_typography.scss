@@ -1,0 +1,30 @@
+@use "../abstract/variables" as *;
+// Kufi
+// font-family: 'Noto Kufi Arabic', sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100;200;300;400;500;600;700&display=swap");
+
+// Cairo
+// font-family: 'Cairo', sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200;400;500;600;700&display=swap");
+
+body {
+  font-family: "Noto Kufi Arabic", sans-serif;
+  color: map-get($map: $theme-colors, $key: "dark");
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+.heading {
+  color: inherit;
+  font-family: map-get($font-families, "cairo");
+  font-size: 3rem;
+  margin-bottom: $gap-md;
+}
+
+@each $name, $value in $font-families {
+  .ff-#{$name} {
+    font-family: $value;
+  }
+}

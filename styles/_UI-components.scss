@@ -1,0 +1,52 @@
+@use "./abstract/mixins" as *;
+
+.item {
+  @include flex-container;
+  width: max-content;
+  font-size: inherit;
+  font-family: inherit;
+  color: inherit;
+  gap: 1rem;
+
+  &__icon {
+    @include flex-container;
+  }
+}
+
+.btn {
+  font-size: inherit;
+  font-family: inherit;
+  background-color: transparent;
+  border: none;
+
+  &--primary {
+    @include btn-config($color-primary, $color-white);
+  }
+  &--warning {
+    @include btn-config($color-info, $color-white);
+  }
+
+  &--info {
+    @include btn-config($color-info, $color-white);
+  }
+  &--secondary {
+    @include btn-config($color-grey-light, $color-grey-dark);
+  }
+}
+
+.spinner {
+  border-top: 0.5rem solid $color-primary;
+  border-radius: 100%;
+  border-left: 0.5rem solid transparent;
+  border-right: 0.5rem solid transparent;
+  animation: loading 0.75s linear infinite;
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

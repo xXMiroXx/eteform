@@ -1,0 +1,42 @@
+@use "@/styles/abstract/mixins" as *;
+$input-state: (
+  "danger": $color-danger,
+  "warning": $color-warning,
+  "success": $color-success,
+);
+
+// Text input styles
+.text-input {
+  &__field {
+    @include flex-container;
+    gap: $gap-sm;
+    font-size: $font-size-lg;
+    border-bottom: 2px solid $color-black;
+    input {
+      padding: $gap-md;
+      font-size: $font-size-lg;
+      width: 100%;
+      border: none;
+      outline: none;
+      background-color: $color-white;
+    }
+  }
+  &__note {
+    font-size: $font-size-lg;
+  }
+  @each $level, $color in $input-state {
+    &--#{$level} {
+      .text-input {
+        &__field {
+          border-color: $color;
+          label {
+            color: $color;
+          }
+        }
+        &__note {
+          color: $color;
+        }
+      }
+    }
+  }
+}

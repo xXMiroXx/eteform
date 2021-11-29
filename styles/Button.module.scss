@@ -1,0 +1,28 @@
+@use "./abstract/mixins" as *;
+
+.btn {
+  font-size: inherit;
+  border: none;
+  color: inherit;
+  font-weight: $weight-bolder;
+  background-color: transparent;
+  font-family: $font-kufi;
+  transition: all 0.3s;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.btn-primary {
+  background-color: $color-primary;
+  color: $color-white;
+  border-radius: 5rem;
+  padding: 0.5rem 1rem;
+  > * {
+    @include flex-container;
+    gap: 1rem;
+  }
+  &:hover {
+    background-color: lighten($color: $color-primary, $amount: 10%);
+  }
+}

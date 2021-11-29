@@ -1,0 +1,131 @@
+@use "sass:map";
+/***COLORS***/
+$color-grey: #b7b7b7;
+$color-light: #5d949b;
+$color-primary: #297f87;
+$color-dark: #25465c;
+$color-secondary: #046475;
+$color-success: #198754;
+$color-warning: #ff8b42;
+$color-danger: #862300;
+$color-grey-light: #94b0b3;
+$color-grey-dark: #324b4e;
+$color-white: #eaf2f3;
+$color-black: #011416;
+$color-info: #20977d;
+
+$theme-colors: (
+  "primary": $color-primary,
+  "secondary": $color-secondary,
+  "dark": $color-dark,
+  "light": $color-light,
+  "success": $color-success,
+  "info": $color-info,
+  "warning": $color-warning,
+  "danger": $color-danger,
+  "light-grey": $color-grey-light,
+  "dark-grey": $color-grey-dark,
+  "white": $color-white,
+  "black": $color-black,
+  "grey": $color-grey,
+);
+
+/***FONTS***/
+
+//Family
+$font-kufi: "Noto Kufi Arabic", sans-serif;
+$font-cairo: "Cairo", sans-serif;
+
+$font-families: (
+  "kufi": $font-kufi,
+  "cairo": $font-cairo,
+);
+
+//Font Weight
+$weight-boldest: 700;
+$weight-bolder: 600;
+$weight-bold: 500;
+$weight-normal: 400;
+$weight-light: 300;
+$weight-lighter: 200;
+
+$font-weights: (
+  "boldest": $weight-boldest,
+  "bolder": $weight-bolder,
+  "bold": $weight-bold,
+  "normal": $weight-normal,
+  "light": $weight-light,
+  "lighter": $weight-lighter,
+);
+// Font Sizes
+$font-size-sm: 1.3rem;
+$font-size-md: 1.6rem;
+$font-size-lg: 2rem;
+$font-size-xl: 3rem;
+$font-size-ms: 5rem;
+
+$font-sizes: (
+  "small": $font-size-sm,
+  "normal": $font-size-md,
+  "large": $font-size-lg,
+  "x-large": $font-size-xl,
+  "massive": $font-size-ms,
+);
+
+/***CONTAINERS***/
+
+//Container Sizes
+
+$con-xs: 32rem;
+$con-sm: 48rem;
+$con-md: 64rem;
+$con-lg: 96rem;
+$con-xl: 118rem;
+$con-ms: 126rem;
+
+$container-sizes: (
+  "xs": $con-xs,
+  "sm": $con-sm,
+  "md": $con-md,
+  "lg": $con-lg,
+  "xl": $con-xl,
+  "ms": $con-ms,
+);
+
+// Row gaps
+$gap-sm: 1rem;
+$gap-md: 2rem;
+$gap-lg: 4rem;
+$gap-xl: 6rem;
+$gap-ms: 10rem;
+
+$gaps: (
+  "sm": 1rem,
+  "md": 2rem,
+  "lg": 4rem,
+  "xl": 6rem,
+  "ms": 10rem,
+);
+
+// Aligns
+
+$aligns: (
+  "start": flex-start,
+  "end": flex-end,
+  "center": center,
+  "stretch": stretch,
+);
+
+// Justifys
+
+$justifys: map.merge(
+  (
+    "between": space-between,
+    "around": space-around,
+  ),
+  $aligns
+);
+
+// Radius
+$container-radius: 0.5rem;
+$btn-radius: 1rem;
