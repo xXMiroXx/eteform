@@ -49,4 +49,8 @@
   &__heading {
     text-align: center;
   }
+  &__box {
+    color: $color-secondary;
+    padding: 0 1rem;
+  }
 }

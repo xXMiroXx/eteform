@@ -2,6 +2,7 @@ import React from "react";
 import SearchBox from "../SearchBox/SearchBox";
 import Styles from "./Hero.module.scss";
 import Composition from "./Composition";
+import SearchForm from "../Search/Search";
 
 export default class Hero extends React.Component {
   state = { desktop: false };
@@ -35,7 +36,10 @@ export default class Hero extends React.Component {
             <h2 className={`heading ${Styles.search__heading}`}>
               اختر عنواناً لطموحاتك و اسم لشركتك
             </h2>
-            <SearchBox />
+            <div className={Styles.search__box}>
+              {/* <SearchBox /> */}
+              <SearchForm />
+            </div>
           </div>
         </div>
       </div>

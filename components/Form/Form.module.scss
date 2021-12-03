@@ -12,6 +12,13 @@
     font-size: 2rem;
     display: block;
     text-align: center;
+    min-height: 5rem;
+    &--success {
+      color: $color-success;
+    }
+    &--fail {
+      color: $color-warning;
+    }
   }
   &__inputs {
     margin-bottom: $gap-md;

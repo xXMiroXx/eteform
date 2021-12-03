@@ -23,6 +23,7 @@ $input-state: (
   }
   &__note {
     font-size: $font-size-lg;
+    height: 1.6rem;
   }
   @each $level, $color in $input-state {
     &--#{$level} {
