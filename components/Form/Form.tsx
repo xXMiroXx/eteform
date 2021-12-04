@@ -9,6 +9,7 @@ export class FormState {
   isTouched: boolean = false;
   isValid: boolean = false;
   isLoading: boolean = false;
+  isResloved: boolean = false;
   formState: { name: string; icon: string; state: "success" | "fail" | "" } = {
     name: "",
     icon: "",
@@ -143,7 +144,7 @@ export default class Form extends React.Component<FormProps, FormState> {
 
   _formChange() {
     const { name, icon, state } = this.formConfig.initialState;
-    this.setState({ formState: { name, icon, state } });
+    this.setState({ formState: { name, icon, state }, isResloved: false });
   }
 
   _submitBtn() {
@@ -179,9 +180,19 @@ export default class Form extends React.Component<FormProps, FormState> {
       </div>
     );
   }
-
-  formResolves() {
-    return <div className={Styles.form__resolves}></div>;
+  resolve() {
+    return <div></div>;
+  }
+  _formResolves() {
+    return (
+      <div
+        className={`${Styles.form__resolve} ${
+          (this.state.isResloved && Styles["form__resolve--resolved"]) || ""
+        }`}
+      >
+        {this.resolve()}
+      </div>
+    );
   }
 
   render() {
@@ -195,6 +206,7 @@ export default class Form extends React.Component<FormProps, FormState> {
         {this.formStatus()}
         {this._formInputs()}
         {this.formControls()}
+        {this._formResolves()}
       </form>
     );
   }

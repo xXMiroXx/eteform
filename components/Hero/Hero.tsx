@@ -1,8 +1,7 @@
 import React from "react";
-import SearchBox from "../SearchBox/SearchBox";
 import Styles from "./Hero.module.scss";
 import Composition from "./Composition";
-import SearchForm from "../Search/Search";
+import SearchForm from "../CompanySearch/CompanySearch";
 
 export default class Hero extends React.Component {
   state = { desktop: false };

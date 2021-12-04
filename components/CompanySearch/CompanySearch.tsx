@@ -1,7 +1,8 @@
 import React, { ChangeEvent } from "react";
 import Form, { FormProps, FormState } from "../Form/Form";
 import TextInput from "../Form/inputs/TextInput";
-import Styles from "./Search.module.scss";
+import Item from "../UI/Item";
+import Styles from "./CompanySearch.module.scss";
 
 export default class SearchForm extends Form {
   constructor(props: FormProps) {
@@ -33,20 +34,46 @@ export default class SearchForm extends Form {
     const input = this.state.inputFields[0].content;
     if (!this.state.isValid) return;
     try {
-      const res = await fetch("http://eteig.uk/" + input);
+      const res = await fetch("/api/search/company?name=" + input);
       const data = await res.json();
       if (data.available) {
-        this.state.formState.name = "الأسم متاح";
-        this.state.formState.icon = "FaRegCheckCircle";
-        this.state.formState.state = "success";
+        this.setState({
+          formState: {
+            name: "الأسم متاح",
+            icon: "FaRegCheckCircle",
+            state: "success",
+          },
+          isResloved: true,
+        });
       } else {
-        this.state.formState.name = "الأسم مسجل بالفعل";
-        this.state.formState.icon = "FaBan";
-        this.state.formState.state = "fail";
+        this.setState({
+          formState: {
+            name: "الأسم مسجل بالفعل",
+            icon: "FaBan",
+            state: "fail",
+          },
+        });
       }
     } catch (e) {
       console.log(e);
     }
+  }
+
+  resolve() {
+    return (
+      <div className={Styles.search__resolve}>
+        <p> لتسجيل شركتك اتصل علي الارقام التاليه:</p>
+        <a href=" https://wa.me/+21000123300">
+          <Item icon="FaWhatsapp" name="0019255674446" />
+        </a>
+        <a href="tel:+21000123300">
+          <Item icon="FaPhone" name="0019255674446" />
+        </a>
+        <a href="mailto:info@eteform.com">
+          <Item icon="FaEnvelope" name="info@eteform.com" />
+        </a>
+      </div>
+    );
   }
 
   searchInput() {

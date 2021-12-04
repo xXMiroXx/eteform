@@ -6,6 +6,7 @@
   box-shadow: 0 3px 6px rgba($color-black, 0.2);
   border-radius: $container-radius;
   padding: $gap-md $gap-sm;
+
   &__status {
     width: max-content;
     margin: auto;
@@ -20,10 +21,32 @@
       color: $color-warning;
     }
   }
+
   &__inputs {
     margin-bottom: $gap-md;
   }
+
   &__controlls {
     @include flex-container(space-between);
+  }
+
+  &__resolve {
+    transition: all 1s;
+    position: absolute;
+    padding: 2rem 1rem;
+    background-color: $color-white;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    opacity: 0;
+    visibility: hidden;
+    border-radius: $container-radius;
+    box-shadow: 0 3px 6px rgba($color-black, 0.2);
+
+    &--resolved {
+      transform: translateY(105%);
+      visibility: visible;
+      opacity: 1;
+    }
   }
 }
