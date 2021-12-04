@@ -34,7 +34,9 @@ export default class SearchForm extends Form {
     const input = this.state.inputFields[0].content;
     if (!this.state.isValid) return;
     try {
-      const res = await fetch("http://eteig.uk/" + input);
+      const res = await fetch(
+        "https://limitless-bastion-41240.herokuapp.com/" + input
+      );
       const data = await res.json();
       if (data.available) {
         this.setState({
