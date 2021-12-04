@@ -1,5 +1,5 @@
 import { NextApiHandler } from "next";
-import validator from "@/helper/search-validator";
+import validator from "../../../helper/search-validator";
 function validateSearchInput(input: string) {
   if (!input) return { status: false, message: "empty field" };
   //Check Symbols

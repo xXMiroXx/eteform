@@ -3,7 +3,7 @@ import Form, { FormProps, FormState } from "../Form/Form";
 import TextInput from "../Form/inputs/TextInput";
 import Item from "../UI/Item";
 import Styles from "./CompanySearch.module.scss";
-import validator from "@/helper/search-validator";
+import validator from "../../helper/search-validator";
 export default class SearchForm extends Form {
   constructor(props: FormProps) {
     super(props);

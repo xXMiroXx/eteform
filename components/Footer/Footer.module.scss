@@ -1,12 +1,19 @@
 @use "@/styles/abstract/mixins" as *;
 .footer {
   padding: 2rem;
+  font-size: $font-size-lg;
   background-color: $color-white;
+  flex-wrap: wrap;
   @include flex-container;
   > * {
     flex: 1;
+    min-width: 300px;
   }
   &__heading {
     font-size: $font-size-ms;
+  }
+  &__contact > * {
+    @include flex-container;
+    gap: 2rem;
   }
 }
