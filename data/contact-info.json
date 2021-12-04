@@ -1,0 +1,26 @@
+[
+  {
+    "country": "Egypt",
+    "address": "3 El Fatemyein St., Off Omar Ibn El Khattab St., Ismaileya Square, Heliopolis, Cairo",
+    "workingTime": "Sat - Th : 9:00 am to 5:00 pm",
+    "phoneNumbers": ["+22-26336767", "+21221555525"],
+    "whatsapp": null,
+    "email": "info@lbsolutionsco.com"
+  },
+  {
+    "country": "UK",
+    "address": "13 Freeland Park Wareham Road, Poole, Dorset, BH16 6FA, UK",
+    "workingTime": "Sat - Th : 9:00 am to 5:00 pm",
+    "phoneNumbers": ["+447451289865"],
+    "whatsapp": null,
+    "email": "info@eteform.com"
+  },
+  {
+    "country": "USA",
+    "address": "473 Mundet Place, Hillside, New Jersey. (Zip code: 07205)",
+    "workingTime": "Sat - Th : 9:00 am to 5:00 pm",
+    "phoneNumbers": ["+19255674446"],
+    "whatsapp": "+19255674446",
+    "email": "info@eteform.com"
+  }
+]

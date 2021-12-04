@@ -1,0 +1,12 @@
+@use "@/styles/abstract/mixins" as *;
+.footer {
+  padding: 2rem;
+  background-color: $color-white;
+  @include flex-container;
+  > * {
+    flex: 1;
+  }
+  &__heading {
+    font-size: $font-size-ms;
+  }
+}

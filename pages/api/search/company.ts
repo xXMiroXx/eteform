@@ -1,5 +1,5 @@
 import { NextApiHandler } from "next";
-
+import validator from "@/helper/search-validator";
 function validateSearchInput(input: string) {
   if (!input) return { status: false, message: "empty field" };
   //Check Symbols
@@ -23,8 +23,9 @@ function fetchSearch(name: string) {
 
 const handler: NextApiHandler = async (req, res) => {
   let name = req.query.name as string;
-  const input = validateSearchInput(name as string);
-  if (!input.status) throw new Error(input.message);
+  // const input = validateSearchInput(name as string);
+  const input = validator(name);
+  if (!input[0]) throw new Error(input[1]);
   name = name.replace(/ /g, "-");
   name = encodeURIComponent(name);
   const data = await fetchSearch(name);

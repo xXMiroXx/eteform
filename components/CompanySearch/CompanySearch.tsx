@@ -3,7 +3,7 @@ import Form, { FormProps, FormState } from "../Form/Form";
 import TextInput from "../Form/inputs/TextInput";
 import Item from "../UI/Item";
 import Styles from "./CompanySearch.module.scss";
-
+import validator from "@/helper/search-validator";
 export default class SearchForm extends Form {
   constructor(props: FormProps) {
     super(props);
@@ -77,13 +77,13 @@ export default class SearchForm extends Form {
   }
 
   searchInput() {
-    const validator: (input: string) => [boolean, string] = (input) => {
-      input = input.trim();
-      if (!input) return [false, "ادخل اسم الشركه"];
-      if (input.match(/[^a-zA-Z\s&.]/))
-        return [false, "اسم الشركه يجب ان يكون بالانجليزيه"];
-      return [true, ""];
-    };
+    // const validator: (input: string) => [boolean, string] = (input) => {
+    //   input = input.trim();
+    //   if (!input) return [false, "ادخل اسم الشركه"];
+    //   if (input.match(/[^a-zA-Z\s&.,]/))
+    //     return [false, "اسم الشركه يجب ان يكون بالانجليزيه"];
+    //   return [true, ""];
+    // };
     const handler = (e: ChangeEvent<HTMLInputElement>) =>
       this.inputReducer("search", e.target.value, validator);
 

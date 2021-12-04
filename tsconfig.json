@@ -10,6 +10,9 @@
       ],
       "@/styles/*": [
         "/styles/*"
+      ],
+      "@/helper/*": [
+        "/helper/*"
       ]
     },
     "target": "es5",
