@@ -8,12 +8,16 @@
   > * {
     flex: 1;
     min-width: 300px;
+    text-align: center;
   }
   &__heading {
     font-size: $font-size-ms;
   }
   &__contact > * {
     @include flex-container;
+    justify-content: center;
+    font-weight: bold;
     gap: 2rem;
+    text-align: center;
   }
 }

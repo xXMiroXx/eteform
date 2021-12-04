@@ -18,7 +18,7 @@ const Footer: React.FC<{ countries: ContactCountry[] }> = ({ countries }) => {
 
         <div className={Styles.footer__switch}>
           <select value={country} onChange={countryChangeHandler}>
-            <option value="UK">بريطنيا</option>
+            <option value="UK">بريطانيا</option>
             <option value="USA">أمريكا</option>
             <option value="Egypt">مصر</option>
           </select>
