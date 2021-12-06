@@ -24,6 +24,7 @@ async function fetchSearch(name: string) {
 
 const handler: NextApiHandler = async (req, res) => {
   try {
+    if (req.method !== "GET") throw new Error("bad request");
     let { name } = req.query;
     if (!name) throw new Error("bad url");
     const [isValid, message] = validator(name as string);

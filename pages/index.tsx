@@ -4,11 +4,11 @@ import { NavProps } from "@/types/nav";
 import localRetrive from "helper/local-retrive";
 
 import Styles from "./index.module.scss";
-export default function Home({ navList, children, contacts }: any) {
+export default function Home({ navList, children, contacts, images }: any) {
   return (
     <Layout navList={navList} contacts={contacts}>
       <section id="section-hero" className={Styles["section-hero"]}>
-        <Hero />
+        <Hero photos={images} />
       </section>
     </Layout>
   );
@@ -19,6 +19,7 @@ export async function getStaticProps() {
   // Get static data.
   props.navList = await localRetrive("main-nav-list");
   props.contacts = await localRetrive("contact-info");
+  props.images = await localRetrive("hero-comp-imgs");
   // props.hero=localRetrive("hero");
   return { props };
 }

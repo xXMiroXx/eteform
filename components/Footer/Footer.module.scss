@@ -2,8 +2,9 @@
 .footer {
   padding: 2rem;
   font-size: $font-size-lg;
-  background-color: $color-white;
+  background-color: $color-grey-dark;
   flex-wrap: wrap;
+  color: $color-white;
   @include flex-container;
   > * {
     flex: 1;

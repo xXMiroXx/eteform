@@ -3,7 +3,10 @@ import Styles from "./Hero.module.scss";
 import Composition from "./Composition";
 import SearchForm from "../CompanySearch/CompanySearch";
 
-export default class Hero extends React.Component {
+export default class Hero extends React.Component<
+  { photos: [] | { src: string; alt: string }[] },
+  { desktop: boolean }
+> {
   state = { desktop: false };
 
   mediaQuery: MediaQueryList | null = null;
@@ -24,7 +27,7 @@ export default class Hero extends React.Component {
     return (
       <div className={Styles.hero}>
         <div className={Styles.hero__photos}>
-          {this.state.desktop && <Composition />}
+          {this.state.desktop && <Composition images={this.props.photos} />}
         </div>
 
         <div className={Styles.hero__text}>

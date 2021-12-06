@@ -3,13 +3,11 @@ import Image from "next/image";
 
 import Styles from "./Composition.module.scss";
 
-type State = {
+type Props = {
   images: [] | { src: string; alt: string }[];
 };
 
-export default class Composition extends React.Component {
-  state: State = { images: [] };
-
+export default class Composition extends React.Component<Props, {}> {
   componentDidMount() {
     fetch("/api/content/hero-comp-imgs")
       .then((res) => res.json())
@@ -18,7 +16,7 @@ export default class Composition extends React.Component {
   }
 
   render() {
-    const { images } = this.state;
+    const { images } = this.props;
     return (
       <div className={Styles.composition}>
         {images.map((img, ind) => (
