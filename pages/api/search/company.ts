@@ -48,7 +48,7 @@ const handler: NextApiHandler = async (req, res) => {
       available,
     });
   } catch (e) {
-    res.status(404).json({ message: "something went wrong" });
+    res.status(404).json({ message: "something went wrong", error: e });
   }
 };
 
