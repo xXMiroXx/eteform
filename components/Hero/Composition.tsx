@@ -11,7 +11,7 @@ export default class Composition extends React.Component {
   state: State = { images: [] };
 
   componentDidMount() {
-    fetch("https://eteform.vercel.app/api/content/hero-comp-imgs")
+    fetch("/api/content/hero-comp-imgs")
       .then((res) => res.json())
       .then((data) => this.setState({ images: data }))
       .catch((e) => console.log(e));
