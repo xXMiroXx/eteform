@@ -28,6 +28,7 @@
 
   &__controlls {
     @include flex-container(space-between);
+    font-size: 1.5rem;
   }
 
   &__resolve {
