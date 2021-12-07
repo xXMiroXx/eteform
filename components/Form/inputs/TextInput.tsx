@@ -1,4 +1,4 @@
-import Item from "@/components/UI/Item";
+import Item from "@/components/UI/Item/Item";
 import Input from "./Input";
 import Styles from "./inputs.module.scss";
 type TextInputProps = {

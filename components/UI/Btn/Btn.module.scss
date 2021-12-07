@@ -1,0 +1,22 @@
+@use "@/styles/abstract/mixins" as *;
+
+.btn {
+  font-size: inherit;
+  font-family: inherit;
+  background-color: transparent;
+  border: none;
+
+  &--primary {
+    @include btn-config($color-primary, $color-white);
+  }
+  &--warning {
+    @include btn-config($color-info, $color-white);
+  }
+
+  &--info {
+    @include btn-config($color-info, $color-white);
+  }
+  &--secondary {
+    @include btn-config($color-grey-light, $color-grey-dark);
+  }
+}

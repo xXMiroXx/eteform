@@ -1,7 +1,7 @@
 import React from "react";
 import Overlay from "../Overlay/Overlay";
-import Btn from "../UI/Btn";
-import Item from "../UI/Item";
+import Btn from "../UI/Btn/Btn";
+import Item from "../UI/Item/Item";
 
 type State = {
   searchRes: boolean;

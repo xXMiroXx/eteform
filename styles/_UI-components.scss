@@ -1,39 +1,5 @@
 @use "./abstract/mixins" as *;
 
-.item {
-  @include flex-container;
-  width: max-content;
-  font-size: inherit;
-  font-family: inherit;
-  color: inherit;
-  gap: 1rem;
-
-  &__icon {
-    @include flex-container;
-  }
-}
-
-.btn {
-  font-size: inherit;
-  font-family: inherit;
-  background-color: transparent;
-  border: none;
-
-  &--primary {
-    @include btn-config($color-primary, $color-white);
-  }
-  &--warning {
-    @include btn-config($color-info, $color-white);
-  }
-
-  &--info {
-    @include btn-config($color-info, $color-white);
-  }
-  &--secondary {
-    @include btn-config($color-grey-light, $color-grey-dark);
-  }
-}
-
 .spinner {
   width: 3rem;
   height: 3rem;

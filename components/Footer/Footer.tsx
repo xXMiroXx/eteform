@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from "react";
 import { ContactCountry } from "@/types/contacts";
 import Styles from "./Footer.module.scss";
-import Item from "../UI/Item";
+import Item from "../UI/Item/Item";
 
 const Footer: React.FC<{ countries: ContactCountry[] }> = ({ countries }) => {
   const [country, setCountry] = useState("UK");

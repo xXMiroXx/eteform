@@ -39,7 +39,7 @@ export default class CollapseClass extends React.Component<Props, State> {
     document.removeEventListener("mousedown", this.onClickAway);
   }
   // Can be override to implement suitable one
-  Head() {
+  Button() {
     return (
       <button onMouseDown={this.onClick.bind(this)} className="collapse__btn">
         <span className="collapse__icon">{this.props.icon}</span>
@@ -61,17 +61,6 @@ export default class CollapseClass extends React.Component<Props, State> {
   }
   // Finally render
   render() {
-    return (
-      <div ref={this.collapseRef} className={this.className}>
-        {this.Head()}
-        <div
-          className={`collapse__content ${
-            (this.state.active && "collapse--active") || ""
-          }`}
-        >
-          {this.props.children}
-        </div>
-      </div>
-    );
+    return <div></div>;
   }
 }

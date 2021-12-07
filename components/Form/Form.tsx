@@ -1,8 +1,8 @@
 import React, { FormEvent, MutableRefObject } from "react";
 
 import Styles from "./Form.module.scss";
-import Item from "@/components/UI/Item";
-import Btn from "@/components/UI/Btn";
+import Item from "@/components/UI/Item/Item";
+import Btn from "@/components/UI/Btn/Btn";
 // Warning levels
 
 export class FormState {

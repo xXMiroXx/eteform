@@ -1,8 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import Item from "@/components/UI/Item";
+import Item from "@/components/UI/Item/Item";
 import Styles from "./Navbar.module.scss";
-import Btn from "@/components/UI/Btn";
+import Btn from "@/components/UI/Btn/Btn";
 import LoginBox from "../Layout/LoginBox";
 import Logo from "../Logo";
 
