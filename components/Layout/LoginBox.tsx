@@ -1,16 +1,13 @@
 import BtnP from "@/components/buttons/BtnP";
 import { FaUser } from "react-icons/fa";
-import Styles from "@/styles/LoginBox.module.scss";
+
 import Btn from "../UI/Btn/Btn";
+import Item from "../UI/Item/Item";
+
 export default function LoginBox() {
   return (
     <Btn color="primary">
-      <div className={Styles.box}>
-        <span className={Styles.icon}>
-          <FaUser />
-        </span>
-        <span className={Styles.text}>تسجيل الدخول</span>
-      </div>
+      <Item name="تسجيل الدخول" icon="FaUser" />
     </Btn>
   );
 }

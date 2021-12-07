@@ -1,4 +1,7 @@
 import React from "react";
+import Item from "../Item/Item";
+
+import Styles from "./Collapse.module.scss";
 
 interface Props {
   name?: string;
@@ -7,18 +10,22 @@ interface Props {
 interface State {
   active: boolean;
 }
-export default class CollapseClass extends React.Component<Props, State> {
+export default class Collapse extends React.Component<Props, State> {
   className: string = "";
   collapseRef: React.RefObject<HTMLDivElement>;
+  contentRef: React.RefObject<HTMLDivElement>;
   constructor(props: Props) {
     super(props);
     // Collapse active state!
     this.state = { active: false };
     // To: Detect of outer click belong to collapse or not
     this.collapseRef = React.createRef();
+    this.contentRef = React.createRef();
     // To: Remove event listner from Dom when unmount
     this.onClickAway = this.onClickAway.bind(this);
+    this.changeWindowHandler = this.changeWindowHandler.bind(this);
   }
+
   // Toggle Collapse on each click
   onClick() {
     this.setState((cur) => ({ active: !cur.active }));
@@ -30,30 +37,50 @@ export default class CollapseClass extends React.Component<Props, State> {
     if (ref && !ref.current?.contains(e.target))
       this.setState({ active: false });
   }
+
+  changeWindowHandler() {
+    const content = this.contentRef.current;
+    if (this.state.active) {
+      content!.style.maxHeight = content!.scrollHeight + "px";
+    }
+  }
+
   // Once componente load on screen attach listner to DOM
   componentDidMount() {
+    // Watch if there is any click outside collapse
     document.addEventListener("mousedown", this.onClickAway);
+    // Watch any change in width then change collapse height
+    window.addEventListener("resize", this.changeWindowHandler);
   }
   // Clean listner after
   componentWillUnmount() {
+    window.removeEventListener("resize", this.changeWindowHandler);
     document.removeEventListener("mousedown", this.onClickAway);
   }
   // Can be override to implement suitable one
-  Button() {
+  button() {
+    return <div>button</div>;
+  }
+
+  _button() {
     return (
-      <button onMouseDown={this.onClick.bind(this)} className="collapse__btn">
-        <span className="collapse__icon">{this.props.icon}</span>
-        <span className="collapse__header">{this.props.name}</span>
+      <button
+        onClick={this.onClick.bind(this)}
+        className={Styles.collapse__btn}
+      >
+        {this.button()}
       </button>
     );
   }
   // Can also be overriden
-  Content() {
+  _content() {
+    const { active } = this.state;
+    const content = this.contentRef.current;
     return (
       <div
-        className={`collapse__content ${
-          (this.state.active && "collapse--active") || ""
-        }`}
+        ref={this.contentRef}
+        className={Styles.collapse__content}
+        style={{ maxHeight: `${active ? content?.scrollHeight + "px" : 0}` }}
       >
         {this.props.children}
       </div>
@@ -61,6 +88,16 @@ export default class CollapseClass extends React.Component<Props, State> {
   }
   // Finally render
   render() {
-    return <div></div>;
+    return (
+      <div
+        ref={this.collapseRef}
+        className={`${Styles.collapse} ${
+          (this.state.active && Styles["collapse--active"]) || ""
+        }`}
+      >
+        {this._button()}
+        {this._content()}
+      </div>
+    );
   }
 }
