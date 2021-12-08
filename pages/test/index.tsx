@@ -1,16 +1,18 @@
-import Collapse from "@/components/UI/Collapse/Collapse";
+import NewNav from "@/components/NewNav/NewNav";
+import localRetrive from "helper/local-retrive";
 
-export default function Test() {
+export default function Test({ navList }: any) {
   return (
     <div>
-      <Collapse name="Iam collapse button" icon="FaBars">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
-          consequuntur dicta sapiente illo adipisci blanditiis qui voluptatem,
-          labore expedita id dolorum, libero totam. Doloremque, quidem provident
-          molestias facere totam sit!
-        </p>
-      </Collapse>
+      <NewNav navList={navList} />
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const props: any = {};
+  // Get static data.
+  props.navList = await localRetrive("main-nav-list");
+  // props.hero=localRetrive("hero");
+  return { props };
 }

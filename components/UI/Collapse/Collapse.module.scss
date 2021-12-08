@@ -1,35 +1,13 @@
 @use "@/styles/abstract/mixins" as *;
 
 .collapse {
-  &__btn {
-    width: 100%;
-    padding: 1.5rem;
-    cursor: pointer;
-    border: none;
-    display: flex;
-    justify-content: space-between;
-    outline: none;
-
-    text-align: start;
-
-    &::after {
-      content: "\25be";
-      float: left;
-      color: inherit;
-      transform: scale(1.5);
-    }
-  }
+  background-color: inherit;
+  color: inherit;
 
   &__content {
     overflow: hidden;
-    transition: max-height 0.5s;
-  }
-}
-
-.collapse--active {
-  .collapse {
-    &__btn::after {
-      content: "\25b4";
-    }
+    transition: max-height 0.2s;
+    background-color: inherit;
+    max-height: 0;
   }
 }

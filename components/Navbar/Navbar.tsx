@@ -5,6 +5,13 @@ import Styles from "./Navbar.module.scss";
 import Btn from "@/components/UI/Btn/Btn";
 import LoginBox from "../Layout/LoginBox";
 import Logo from "../Logo";
+import Collapse from "../UI/Collapse/Collapse";
+
+class NavCollapse extends Collapse {
+  button() {
+    return <Item name={this.props.name} icon={this.props.icon} />;
+  }
+}
 
 type NavItem = {
   link?: string;
@@ -81,7 +88,7 @@ export default class Navbar extends React.Component<Props, State> {
               </Btn>
             </div>
             <ul
-              className={`${Styles["nav__nested-list"]} 
+              className={`${Styles["nav__nested-list"]}
             ${
               (this.state.nested === item.id &&
                 Styles["nav__nested-list--active"]) ||
