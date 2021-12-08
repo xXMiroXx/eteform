@@ -2,11 +2,12 @@ import NewNav from "@/components/NewNav/NewNav";
 import localRetrive from "helper/local-retrive";
 
 export default function Test({ navList }: any) {
-  return (
-    <div>
-      <NewNav navList={navList} />
-    </div>
-  );
+  return <div></div>;
+  // return (
+  //   <div>
+  //     <NewNav navList={navList} />
+  //   </div>
+  // );
 }
 
 export async function getStaticProps() {
