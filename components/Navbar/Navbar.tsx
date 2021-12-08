@@ -7,12 +7,6 @@ import LoginBox from "../Layout/LoginBox";
 import Logo from "../Logo";
 import Collapse from "../UI/Collapse/Collapse";
 
-class NavCollapse extends Collapse {
-  button() {
-    return <Item name={this.props.name} icon={this.props.icon} />;
-  }
-}
-
 type NavItem = {
   link?: string;
   id: string;
