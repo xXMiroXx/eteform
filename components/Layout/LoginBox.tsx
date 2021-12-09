@@ -6,7 +6,7 @@ import Item from "../UI/Item/Item";
 
 export default function LoginBox() {
   return (
-    <Btn color="primary">
+    <Btn>
       <Item name="تسجيل الدخول" icon="FaUser" />
     </Btn>
   );

@@ -1,5 +1,5 @@
 export type ItemType = {
   className?: string;
   name?: string;
-  icon?: string;
+  icon?: string | any;
 };

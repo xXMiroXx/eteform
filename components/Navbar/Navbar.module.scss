@@ -1,116 +1,58 @@
-@use "../../styles/abstract/mixins" as *;
+@use "@/styles/abstract/mixins" as *;
+
 .nav {
-  position: relative;
-  padding: 1rem;
+  padding: 1rem 2rem;
   font-size: 2rem;
-  color: $color-grey-light;
+  transition: transform 0.5s;
   background-color: $color-grey-dark;
-  left: 0;
+  position: fixed;
   width: 100%;
-  z-index: 999;
-  top: 0;
-
-  @include flex-container;
-  gap: 2rem;
-
-  &__toggler {
-    font-size: 3rem;
+  color: $color-grey-light;
+  z-index: 10;
+  &--desktop {
+    display: flex;
+    gap: 3rem;
+  }
+  &__collapse {
     color: $color-grey-light;
-    line-height: 0;
-    display: block;
+    font-size: 2rem;
+    @include flex-container;
+    gap: 3rem;
   }
 
-  // Main nav list
-  &__list {
-    position: absolute;
-    @include flex-container(space-between);
-    list-style: none;
-    width: 85%;
-    border-radius: 1rem;
-    margin-inline-end: 5rem;
-    flex-direction: column;
-    top: 120%;
-    visibility: hidden;
-    opacity: 0;
-    transform: translateY(-150%);
-    transition: all 0.5s;
-
-    //When Toggler active:
-    &--active {
-      display: flex;
-      background-color: $color-grey-dark;
-      padding: 0.5rem 2rem;
-      transform: translateY(0);
-      visibility: visible;
-      opacity: 1;
-      .nav__item {
-        margin-bottom: 3rem;
-      }
-    }
-  }
-  //Nav Item
-  &__item {
-    width: max-content;
-    white-space: nowrap;
-  }
-
-  //LOGO
   &__logo {
-    width: 6rem;
     position: absolute;
-    left: 2rem;
-    filter: invert(0.8);
+    top: 0.5rem;
+    left: 0.5rem;
+    padding: 0.5rem;
+    width: 6rem;
+    height: 6rem;
+    filter: invert((0.8));
   }
 
-  &__nested {
-    &-list {
-      position: absolute;
+  &__loginbox {
+    color: inherit;
+  }
+
+  &__list {
+    list-style: none;
+    color: $color-grey-light;
+    margin-right: 5rem;
+    &--desktop {
       @include flex-container(space-between);
-      list-style: none;
-      border-radius: 1rem;
-      flex-direction: column;
-      top: 130%;
-      visibility: hidden;
-      opacity: 0;
-      transform: translateY(-150%);
-      transition: all 0.5s;
-      background-color: $color-grey-dark;
-      padding: 0.5rem 2rem;
-      min-width: 60%;
-      top: 110%;
-      justify-content: flex-start;
-      &--active {
-        visibility: visible;
-        opacity: 1;
-        transform: translateY(0);
-      }
+      width: 60%;
     }
   }
-  // when on desktop
-  @media (min-width: 900px) {
-    &__list {
-      position: relative;
-      width: 60%;
-      flex-direction: row;
-      visibility: visible;
-      opacity: 1;
-      transform: translate(0);
-    }
-    &__toggler {
-      display: none;
-    }
-    &__nested-list {
-      top: 140%;
-      min-width: 35%;
-    }
+  &__nested {
+    list-style: none;
+    background-color: $color-grey-dark;
+    padding: 2rem;
+    border-radius: $container-radius;
+  }
+  &__item {
+    width: min-content;
   }
 }
-
-@keyframes popup {
-  from {
-    top: 0;
-  }
-  to {
-    top: 10rem;
-  }
+.collapse__list {
+  width: max-content;
 }

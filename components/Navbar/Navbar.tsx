@@ -1,101 +1,112 @@
-import React from "react";
+import React, { MutableRefObject } from "react";
 import Link from "next/link";
-import Item from "@/components/UI/Item/Item";
-import Styles from "./Navbar.module.scss";
-import Btn from "@/components/UI/Btn/Btn";
-import LoginBox from "../Layout/LoginBox";
-import Logo from "../Logo";
+
+import * as Icons from "react-icons/fa";
 import Collapse from "../UI/Collapse/Collapse";
+import Item from "../UI/Item/Item";
+import Logo from "../Logo";
+import LoginBox from "../Layout/LoginBox";
 
-type NavItem = {
-  link?: string;
-  id: string;
-  name: string;
-  icon: string;
-  nestedList?: any[];
-};
-type Props = {
-  navList: NavItem[];
-};
+import Styles from "./Navbar.module.scss";
+import { NavItem, NavProps } from "@/types/nav";
 
-type State = {
-  main: boolean;
-  nested: string | "";
-};
+class CollapseNav extends Collapse {
+  constructor(props: any) {
+    super(props);
+    this.config.animationTime = 300;
+  }
+  collapseHead() {
+    const icon = (this.state.active && "FaTimes") || "FaBars";
+    return (
+      <div className={Styles.nav__collapse}>
+        <span onMouseDown={this.onClick.bind(this)}>{Icons[icon]({})}</span>
+        <span>
+          <LoginBox />
+        </span>
+        <span>
+          <Logo className={Styles.nav__logo} />
+        </span>
+      </div>
+    );
+  }
+}
 
-/**
- * @description Main Navbar
- */
+class CollapseItem extends Collapse {
+  constructor(props: any) {
+    super(props);
+    this.config.animationTime = 300;
+  }
+  collapseHead() {
+    return (
+      <li onMouseDown={this.onClick.bind(this)}>
+        <Item
+          name={this.props.name}
+          icon={this.state.active ? "FaChevronUp" : "FaChevronDown"}
+        />
+      </li>
+    );
+  }
+}
 
-export default class Navbar extends React.Component<Props, State> {
-  state: State = { main: false, nested: "" };
+export default class Navbar extends React.Component<
+  NavProps,
+  { mob: boolean; show: boolean; screenY: number }
+> {
+  matchWidth: MutableRefObject<MediaQueryList | null>;
+  timer: MutableRefObject<NodeJS.Timeout | null>;
+  hideTimer: MutableRefObject<NodeJS.Timeout | null>;
 
-  navRef = React.createRef<HTMLUListElement>();
-  navBtnRef = React.createRef<HTMLDivElement>();
+  state = { mob: true, screenY: 0, show: true };
 
-  clickOut = (e: { target: any }) => {
-    if (
-      this.navRef &&
-      this.navBtnRef &&
-      !(
-        this.navRef.current?.contains(e.target) ||
-        this.navBtnRef.current?.contains(e.target)
-      )
-    )
-      this.setState({ main: false, nested: "" });
+  constructor(props: NavProps) {
+    super(props);
+    this.matchWidth = React.createRef();
+    this.timer = React.createRef();
+    this.hideTimer = React.createRef();
+  }
+  mediaChangeHandler = (e: MediaQueryListEvent | MediaQueryList) => {
+    if (e.matches) this.setState({ mob: false });
+    else this.setState({ mob: true });
   };
+  hideHandler() {
+    if (this.hideTimer.current) clearTimeout(this.hideTimer.current);
+    this.hideTimer.current = setTimeout(() => {
+      if (this.state.screenY === 0) return;
+      this.setState({ show: false });
+    }, 1000);
+  }
+
+  scrollHandler() {
+    if (this.timer.current) clearTimeout(this.timer.current);
+    if (this.hideTimer.current) clearTimeout(this.hideTimer.current);
+    this.timer.current = setTimeout(() => {
+      this.setState((cur) => {
+        const newState = { ...cur };
+        newState.screenY = scrollY;
+        if (scrollY <= cur.screenY) newState.show = true;
+        else this.hideHandler();
+        return newState;
+      });
+    }, 50);
+  }
 
   componentDidMount() {
-    document.addEventListener("mousedown", this.clickOut);
+    this.matchWidth.current = window.matchMedia("(min-width : 900px)");
+    this.matchWidth.current.addEventListener("change", this.mediaChangeHandler);
+    this.mediaChangeHandler(this.matchWidth.current);
+    this.setState({ screenY: window.scrollY });
+    document.addEventListener("scroll", this.scrollHandler.bind(this));
   }
 
   componentWillUnmount() {
-    document.removeEventListener("mousedown", this.clickOut);
-  }
-
-  mainNavActive() {
-    this.setState((cur) => {
-      return { nested: "", main: !cur.main };
-    });
-  }
-
-  nestedNavActive(id: string) {
-    this.setState((cur) => {
-      const curCopy = { ...cur };
-      if (id === cur.nested) curCopy.nested = "";
-      else curCopy.nested = id;
-      return curCopy;
-    });
-  }
-
-  listGenerator(item: NavItem) {
-    if (item.nestedList) {
-      return (
-        <li key={item.id} className={Styles.nav__item}>
-          <nav className={Styles.nav__nested}>
-            <div className={Styles["nav__nested-title"]}>
-              <Btn
-                handler={this.nestedNavActive.bind(this, item.id)}
-                color="info"
-              >
-                <Item name={item.name} icon={item.icon} />
-              </Btn>
-            </div>
-            <ul
-              className={`${Styles["nav__nested-list"]}
-            ${
-              (this.state.nested === item.id &&
-                Styles["nav__nested-list--active"]) ||
-              ""
-            }`}
-            >
-              {item.nestedList.map(this.listGenerator.bind(this))}
-            </ul>
-          </nav>
-        </li>
+    if (this.matchWidth.current)
+      this.matchWidth.current.removeEventListener(
+        "change",
+        this.mediaChangeHandler
       );
-    }
+  }
 
+  generateItem(item: NavItem) {
     return (
       <li key={item.id} className={Styles.nav__item}>
         <Link href={item.link || "#"}>
@@ -107,24 +118,59 @@ export default class Navbar extends React.Component<Props, State> {
     );
   }
 
-  render() {
+  generateList(list: NavItem[]) {
+    return list.map((item) => {
+      if (item.nestedList) {
+        return (
+          <CollapseItem
+            className={Styles.collapse__list}
+            float={this.state.mob ? false : true}
+            key={item.id}
+            name={item.name}
+          >
+            <ul className={Styles.nav__nested}>
+              {this.generateList(item.nestedList)}
+            </ul>
+          </CollapseItem>
+        );
+      }
+      return this.generateItem(item);
+    });
+  }
+
+  mobNav() {
     return (
-      <nav className={Styles.nav}>
-        <div ref={this.navBtnRef}>
-          <Btn handler={this.mainNavActive.bind(this)}>
-            <Item icon="FaBars" className={Styles.nav__toggler} />
-          </Btn>
-        </div>
+      <CollapseNav className={Styles.collapse__nav}>
+        <ul className={Styles.nav__list}>
+          {this.generateList(this.props.navList)}
+        </ul>
+      </CollapseNav>
+    );
+  }
+
+  desktopNav() {
+    return (
+      <>
         <LoginBox />
-        <ul
-          ref={this.navRef}
-          className={`${Styles.nav__list} ${
-            (this.state.main && Styles["nav__list--active"]) || ""
-          }`}
-        >
-          {this.props.navList.map(this.listGenerator.bind(this))}
+        <ul className={`${Styles.nav__list} ${Styles["nav__list--desktop"]}`}>
+          {this.generateList(this.props.navList)}
         </ul>
         <Logo className={Styles.nav__logo} />
+      </>
+    );
+  }
+
+  render() {
+    return (
+      <nav
+        style={{
+          transform: `translateY(${(this.state.show && "0") || "-100%"})`,
+        }}
+        className={`${Styles.nav} ${
+          (this.state.mob && "") || Styles["nav--desktop"]
+        }`}
+      >
+        {(this.state.mob && this.mobNav()) || this.desktopNav()}
       </nav>
     );
   }
