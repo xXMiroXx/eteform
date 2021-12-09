@@ -7,7 +7,7 @@ export default function Layout({ navList, contacts, children }: any) {
     <>
       <Navbar navList={navList} />
       <main>{children}</main>
-      {/* <Footer countries={contacts} /> */}
+      <Footer countries={contacts} />
     </>
   );
 }

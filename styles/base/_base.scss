@@ -1,6 +1,7 @@
 @use "../abstract/mixins" as *;
 
 html {
+  scroll-behavior: smooth;
   font-size: 40%;
   @media (min-width: 350px) {
     font-size: 45%;

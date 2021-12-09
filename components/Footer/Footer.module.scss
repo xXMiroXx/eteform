@@ -1,24 +1,87 @@
 @use "@/styles/abstract/mixins" as *;
+
 .footer {
-  padding: 2rem;
-  font-size: $font-size-lg;
-  background-color: $color-grey-dark;
-  flex-wrap: wrap;
-  color: $color-white;
-  @include flex-container;
-  > * {
-    flex: 1;
-    min-width: 300px;
+  padding: $container-padding;
+  background-color: $color-white;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  align-items: center;
+  gap: $gap-lg;
+  grid-template-areas:
+    "controlls"
+    "contact"
+    "packages"
+    "services"
+    "socials"
+    "copyrights";
+  @media (min-width: 900px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+      "controlls   controlls  packages   services"
+      "contact     contact    packages   services"
+      ".....       ......     ....       ....  "
+      " socials    socials  copyrights copyrights";
+  }
+
+  &__controlls {
+    grid-area: controlls;
     text-align: center;
+    &-select {
+      font-size: 2.5rem;
+      padding: 0.5rem 1rem;
+      border: 3px solid $color-primary;
+      border-radius: $container-radius;
+      background-color: transparent;
+    }
   }
-  &__heading {
-    font-size: $font-size-ms;
+
+  &__contact {
+    text-align: center;
+    font-size: 1.6rem;
+    grid-area: contact;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: $gap-lg;
+    &-address {
+      width: 100%;
+    }
+    &-head {
+      display: inline-block;
+      font-size: 2.5rem;
+      color: $color-secondary;
+    }
   }
-  &__contact > * {
+
+  &__packages {
+    ul {
+      list-style: none;
+    }
+    grid-area: packages;
+    font-size: 2rem;
+  }
+
+  &__services {
+    ul {
+      list-style: none;
+    }
+    grid-area: services;
+    // align-self: center;
+    font-size: 2rem;
+  }
+
+  &__socials {
+    font-size: 3rem;
+    grid-area: socials;
     @include flex-container;
     justify-content: center;
-    font-weight: bold;
-    gap: 2rem;
-    text-align: center;
+    gap: $gap-lg;
+  }
+
+  &__copyrights {
+    grid-area: copyrights;
+    justify-self: end;
   }
 }
