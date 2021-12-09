@@ -42,6 +42,7 @@ class LoginForm extends Form {
     this.formConfig = {
       formBtns: {
         submitBtn: { name: "تسجيل دخول", icon: "FaUser" },
+        secondaryBtn: { name: "انشاء حساب", icon: "FaUserPlus" },
       },
       initialState: {
         name: "تسجيل دخول",
