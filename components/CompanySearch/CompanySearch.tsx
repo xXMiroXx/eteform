@@ -63,11 +63,11 @@ export default class SearchForm extends Form {
     return (
       <div className={Styles.search__resolve}>
         <p> لتسجيل شركتك اتصل علي الارقام التاليه:</p>
-        <a href=" https://wa.me/+21000123300">
-          <Item icon="FaWhatsapp" name="0019255674446" />
+        <a href=" https://wa.me/+19255674446">
+          <Item icon="FaWhatsapp" name="19255674446+" />
         </a>
-        <a href="tel:+21000123300">
-          <Item icon="FaPhone" name="0019255674446" />
+        <a href="tel:+19255674446">
+          <Item icon="FaPhone" name="19255674446+" />
         </a>
         <a href="mailto:info@eteform.com">
           <Item icon="FaEnvelope" name="info@eteform.com" />
@@ -77,13 +77,6 @@ export default class SearchForm extends Form {
   }
 
   searchInput() {
-    // const validator: (input: string) => [boolean, string] = (input) => {
-    //   input = input.trim();
-    //   if (!input) return [false, "ادخل اسم الشركه"];
-    //   if (input.match(/[^a-zA-Z\s&.,]/))
-    //     return [false, "اسم الشركه يجب ان يكون بالانجليزيه"];
-    //   return [true, ""];
-    // };
     const handler = (e: ChangeEvent<HTMLInputElement>) =>
       this.inputReducer("search", e.target.value, validator);
 

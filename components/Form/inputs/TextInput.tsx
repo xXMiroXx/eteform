@@ -1,4 +1,5 @@
 import Item from "@/components/UI/Item/Item";
+import { HTMLInputTypeAttribute } from "react";
 import Input from "./Input";
 import Styles from "./inputs.module.scss";
 type TextInputProps = {
@@ -6,10 +7,11 @@ type TextInputProps = {
   note: string;
   state?: string;
   className?: string;
+  type?: HTMLInputTypeAttribute;
 };
 
 export default class TextInput extends Input<TextInputProps, {}> {
-  type = "text";
+  type: HTMLInputTypeAttribute = "text";
   label() {
     return (
       <label htmlFor={this.props.nameId}>

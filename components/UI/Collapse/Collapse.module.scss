@@ -1,10 +1,12 @@
 @use "@/styles/abstract/mixins" as *;
 
 .collapse {
+  z-index: 10;
   background-color: inherit;
   color: inherit;
 
   &__content {
+    z-index: 10;
     overflow: hidden;
     transition: max-height 0.2s;
     background-color: inherit;

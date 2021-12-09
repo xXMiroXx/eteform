@@ -24,6 +24,9 @@
 
   &__inputs {
     margin-bottom: $gap-md;
+    > * {
+      margin-bottom: $gap-md;
+    }
   }
 
   &__controlls {

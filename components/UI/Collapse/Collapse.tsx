@@ -105,6 +105,7 @@ export default class Collapse extends React.Component<Props, State> {
         style={{
           position: (this.props.float && "absolute") || "relative",
           transition: `all ${this.config.animationTime}ms`,
+          zIndex: (this.props.float && "999") || "",
         }}
         ref={this.contentRef}
         className={Styles.collapse__content}
