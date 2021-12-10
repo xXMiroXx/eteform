@@ -5,13 +5,15 @@ import Styles from "./Pair.module.scss";
 interface PairProps {
   image: string;
   alt: string;
+  className?: string;
 }
 
 export default class Pair extends React.Component<PairProps> {
   render() {
-    const { image, alt, children } = this.props;
+    const { image, alt, children, className } = this.props;
     return (
-      <div className={Styles.pair}>
+      <div className={`${Styles.pair} ${className || ""}`}>
+        <div className={Styles.pair__content}>{children}</div>
         <div className={Styles.pair__img}>
           <Image
             src={image}
@@ -21,7 +23,6 @@ export default class Pair extends React.Component<PairProps> {
             height="250"
           />
         </div>
-        <div className={Styles.pair__content}>{children}</div>
       </div>
     );
   }

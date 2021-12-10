@@ -16,11 +16,23 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+p {
+  font-size: 2rem;
+  margin-bottom: $gap-md;
+}
+
 .heading {
   color: inherit;
-  font-family: map-get($font-families, "cairo");
-  font-size: 3rem;
+  font-size: 4rem;
   margin-bottom: $gap-md;
+}
+
+.sub-heading {
+  color: $color-secondary;
+  font-size: 3rem;
+  margin-bottom: $gap-sm;
+  font-family: map-get($font-families, "cairo");
 }
 
 @each $name, $value in $font-families {

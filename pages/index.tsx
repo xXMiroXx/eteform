@@ -1,5 +1,6 @@
 import Hero from "@/components/Hero/Hero";
 import Layout from "@/components/Layout/Layout";
+import WroldSection from "@/components/WorldSection/WorldSection";
 import { NavProps } from "@/types/nav";
 import localRetrive from "helper/local-retrive";
 
@@ -9,6 +10,9 @@ export default function Home({ navList, children, contacts, images }: any) {
     <Layout navList={navList} contacts={contacts}>
       <section id="section-hero" className={Styles["section-hero"]}>
         <Hero photos={images} />
+      </section>
+      <section>
+        <WroldSection />
       </section>
     </Layout>
   );

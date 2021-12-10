@@ -5,6 +5,7 @@
   background-color: $color-white;
   box-shadow: 0 3px 6px rgba($color-black, 0.2);
   border-radius: $container-radius;
+  overflow: hidden;
   padding: $gap-md $gap-sm;
 
   &__status {
@@ -22,12 +23,9 @@
     }
   }
 
-  &__inputs {
-    margin-bottom: $gap-md;
-    > * {
-      margin-bottom: $gap-md;
-    }
-  }
+  // &__inputs {
+
+  // }
 
   &__controlls {
     @include flex-container(space-between);

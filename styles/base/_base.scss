@@ -18,7 +18,11 @@ html {
 }
 
 body {
-  background-color: #eee;
+  background-color: $color-white;
+}
+
+section {
+  margin-bottom: 9rem;
 }
 
 *,

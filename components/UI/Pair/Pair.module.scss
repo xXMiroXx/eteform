@@ -1,0 +1,21 @@
+@use "@/styles/abstract/mixins" as *;
+
+.pair {
+  @include flex-container;
+  //   align-items: flex-start;
+  padding: $container-padding;
+  gap: $gap-md;
+  flex-wrap: wrap-reverse;
+
+  &__img {
+    flex: 4;
+    min-width: 35rem;
+    border-radius: $container-radius;
+    overflow: hidden;
+  }
+
+  &__content {
+    min-width: 35rem;
+    flex: 5;
+  }
+}

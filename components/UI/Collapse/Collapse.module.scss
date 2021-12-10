@@ -2,14 +2,15 @@
 
 .collapse {
   z-index: 10;
-  background-color: inherit;
   color: inherit;
+  overflow: hidden;
+  border-radius: $container-radius;
 
   &__content {
+    border-radius: $container-radius;
     z-index: 10;
     overflow: hidden;
     transition: max-height 0.2s;
-    background-color: inherit;
     max-height: 0;
   }
 }

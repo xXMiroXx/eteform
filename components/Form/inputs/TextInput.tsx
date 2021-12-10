@@ -20,10 +20,6 @@ export default class TextInput extends Input<TextInputProps, {}> {
     );
   }
 
-  inputNote() {
-    return <p>{this.props.note}</p>;
-  }
-
   render() {
     return (
       <div
@@ -35,7 +31,7 @@ export default class TextInput extends Input<TextInputProps, {}> {
           {this.label()}
           {this.input()}
         </div>
-        <div className={Styles["text-input__note"]}>{this.inputNote()}</div>
+        <div className={Styles["text-input__note"]}>{this.props.note}</div>
       </div>
     );
   }
