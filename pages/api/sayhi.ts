@@ -1,4 +1,4 @@
-import testHelp from "helper/testHelp";
+import testHelp from "@/helper/testHelp";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {

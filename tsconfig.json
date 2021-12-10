@@ -11,6 +11,12 @@
       "@/styles/*": [
         "/styles/*"
       ],
+      "@/data/*": [
+        "data/*"
+      ],
+      "@/helper/*": [
+        "helper/*"
+      ]
     },
     "target": "es5",
     "lib": [
