@@ -29,6 +29,7 @@
     grid-area: controlls;
     text-align: center;
     &-select {
+      font-family: inherit;
       font-size: 2.5rem;
       padding: 0.5rem 1rem;
       border: 3px solid $color-primary;

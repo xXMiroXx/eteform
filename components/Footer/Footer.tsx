@@ -2,9 +2,10 @@ import { ChangeEvent, useState } from "react";
 import { ContactCountry } from "@/types/contacts";
 import Styles from "./Footer.module.scss";
 import Item from "../UI/Item/Item";
+import { FaBars } from "react-icons/fa";
 
 const Footer: React.FC<{ countries: ContactCountry[] }> = ({ countries }) => {
-  const [country, setCountry] = useState("UK");
+  const [country, setCountry] = useState("EG");
   const countryChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
     setCountry(e.target.value);
   };
@@ -19,9 +20,9 @@ const Footer: React.FC<{ countries: ContactCountry[] }> = ({ countries }) => {
           onChange={countryChangeHandler}
           value={country}
         >
-          <option value="UK">بريطانيا</option>
-          <option value="US">امريكا</option>
-          <option value="EG">مصر</option>
+          <option value="UK">بريطانيا🇬🇧</option>
+          <option value="US">امريكا🇺🇸</option>
+          <option value="EG">مصر🇪🇬</option>
         </select>
       </div>
       <div className={Styles.footer__contact}>

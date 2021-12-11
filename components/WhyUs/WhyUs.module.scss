@@ -1,6 +1,7 @@
 @use "@/styles/abstract/mixins" as *;
 
 .why {
+  background-color: $color-white;
   font-size: 2rem;
   padding: $container-padding;
   &__features {
