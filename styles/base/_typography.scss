@@ -35,6 +35,9 @@ p {
   font-family: map-get($font-families, "cairo");
 }
 
+.center-text {
+  text-align: center;
+}
 @each $name, $value in $font-families {
   .ff-#{$name} {
     font-family: $value;

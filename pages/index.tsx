@@ -1,5 +1,6 @@
 import Hero from "@/components/Hero/Hero";
 import Layout from "@/components/Layout/Layout";
+import WhyUs from "@/components/WhyUs/Whyus";
 import WroldSection from "@/components/WorldSection/WorldSection";
 import { NavProps } from "@/types/nav";
 import localRetrive from "helper/local-retrive";
@@ -13,6 +14,9 @@ export default function Home({ navList, children, contacts, images }: any) {
       </section>
       <section>
         <WroldSection />
+      </section>
+      <section>
+        <WhyUs />
       </section>
     </Layout>
   );

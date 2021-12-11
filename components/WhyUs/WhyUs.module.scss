@@ -1,0 +1,27 @@
+@use "@/styles/abstract/mixins" as *;
+
+.why {
+  font-size: 2rem;
+  padding: $container-padding;
+  &__features {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: $gap-ms;
+  }
+  &__item {
+    flex: 1;
+    &-head {
+      display: flex;
+      justify-content: center;
+      margin-bottom: $gap-md;
+      color: $color-secondary;
+    }
+    &-body {
+      color: $color-grey-dark;
+      text-align: center;
+    }
+  }
+  &__btn {
+  }
+}

@@ -1,4 +1,5 @@
 import Btn from "../UI/Btn/Btn";
+import Item from "../UI/Item/Item";
 import Pair from "../UI/Pair/Pair";
 
 import Styles from "./WorldSection.module.scss";
@@ -11,15 +12,18 @@ export default function WroldSection() {
       alt="someone points to world"
     >
       <div className={Styles.world__content}>
-        <h2 className="heading">الحدود ﻻ تهم!</h2>
+        <h2 className="heading">
+          <Item name="الحدود ﻻ تهم!" icon="FaGlobe" />
+        </h2>
         <h3 className="sub-heading">
-          مع خطط الاسعار الدوليه موقعك في اي دوله لا يؤثر علي هاوية شركتك{" "}
+          مع خطط الاسعار الدوليه موقعك في اي دوله لا يؤثر علي هاوية شركتك
         </h3>
         <p>
           سجل شركتك في المملكة المتحدة ، بعنوان عمل قوي في وسط لندن وابدأ بأقوى
           أساس للنجاح. نحن نقدم تسجيلات تجارية دولية سهلة وموثوقة لغير المقيمين
           في المملكة المتحدة.
         </p>
+
         <Btn className={Styles.world__btn} color="primary">
           سجل الان
         </Btn>
